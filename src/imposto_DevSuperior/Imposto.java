@@ -1,10 +1,12 @@
-package imposto_DevSuperior;
+package Desafio_Imposto;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Imposto {
 
+	
+	
 	Double impostoSobreSalario(Double quantia) {
 	Double rendaMensal = quantia/12;
 	if (rendaMensal <= 3000) {
@@ -12,20 +14,20 @@ public class Imposto {
 	}
 	 if (rendaMensal > 3000 && rendaMensal <= 5000) {
 			Double imposto = quantia * 0.1;
-			System.out.printf("Imposto sobre sálario: R$ %.2f", imposto);
+			System.out.printf("Imposto sobre sÃ¡lario: R$ %.2f", imposto);
 	 }
 	 if (rendaMensal > 5000) {
 
 			Double imposto = quantia * 0.2;
-			System.out.printf("Imposto sobre sálario: R$ %.2f", imposto);
+			System.out.printf("Imposto sobre sÃ¡lario: R$ %.2f", imposto);
 	 }
 	return rendaMensal;
 		
 	}
-Double impostoSobreServiços(Double quantia) {
+Double impostoSobreServiÃ§os(Double quantia) {
 	
 	Double imposto1 = quantia * 0.15;
-	System.out.printf("\nImposto sobre serviços: R$ %.2f", imposto1);
+	System.out.printf("\nImposto sobre serviÃ§os: R$ %.2f", imposto1);
 	return imposto1;
 		
 	}
@@ -51,7 +53,8 @@ void impostoBrutoTotal(Double salario, Double servicos, Double gc) {
 			Double imposto = salario * 0.2;
 			 impSalario = imposto;
 	 }
-	 
+	 System.out.println();
+	System.out.println("\nResumo");
 	 System.out.printf("\nImposto bruto total: R$ %.2f", imposto1 + imposto2 + impSalario);
 	 
 	
@@ -83,20 +86,27 @@ Double imposto2 = gc * 0.2;
 		
 		
  }
- System.out.printf("\nAbatimento R$ %.2f ", abat);
+ Double maxdeducao = 0.0;
  Double total = imposto1 + imposto2 + impSalario;
+
  if (total > abat) {
-	 Double deducao = total * 0.3;
+	
+	 maxdeducao = total * 0.3;
+	 
+	 System.out.printf("\nAbatimento R$ %.2f ", abat);
 		System.out.printf("\nImposto devido: R$%.2f", (total - abat));
 
 	} // maximo dedutivel menor que gastos dedutiveis
 	if (total < abat) {
-		Double deducao = total * 0.3;
-		System.out.printf("\nImposto devido: R$%.2f", (total - deducao));
+		
+		maxdeducao = total * 0.3;
+		
+		 System.out.printf("\nAbatimento R$ %.2f ", maxdeducao);
+		System.out.printf("\nImposto devido: R$%.2f", (total - maxdeducao));
 
 	}
 
- 
+	
  
  
 
@@ -120,11 +130,11 @@ Double imposto2 = gc * 0.2;
 		
 		System.out.print("Renda anual com salario: ");
 		rendaAnual = scan.nextDouble();
-		System.out.print("Renda anual com prestação de serviços: ");
+		System.out.print("Renda anual com prestaÃ§Ã£o de serviÃ§os: ");
 		prestServicos = scan.nextDouble();
 		System.out.print("Renda anual com ganho de capital: ");
 		ganhoCapital = scan.nextDouble();
-		System.out.print("Gastos médicos: ");
+		System.out.print("Gastos mÃ©dicos: ");
 		gastosMedic = scan.nextDouble();
 		System.out.print("Gastos adicionais: ");
 		gastosEduca = scan.nextDouble();
@@ -134,11 +144,11 @@ Double imposto2 = gc * 0.2;
 		
 
 		System.out.println();
-		System.out.println("RELATÓRIO: ");
+		System.out.println("RELATÃ“RIO: ");
 
 	
 		cal.impostoSobreSalario(rendaAnual);
-		cal.impostoSobreServiços(prestServicos);
+		cal.impostoSobreServiÃ§os(prestServicos);
 		cal.impostoSobreGc(ganhoCapital);
 		cal.impostoBrutoTotal(rendaAnual, prestServicos, ganhoCapital);
 		cal.abatimento(rendaAnual, prestServicos, ganhoCapital, gastosMedic, gastosEduca);
